@@ -18,6 +18,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_playerDis = get_position().distance_to(player.get_position())
+	Engine.set_time_scale(1)
+	if _playerDis < 250:	
+		print("slowwww")
+		Engine.set_time_scale((_playerDis/250) - 0.4)
 	if _playerDis <= 80 && _canAttack:
 		player.health -= attackDamage
 		_canAttack = false
