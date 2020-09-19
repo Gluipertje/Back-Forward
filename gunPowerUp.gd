@@ -10,6 +10,9 @@ func _ready():
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("fire"):
 		firing = true
+	
+	if firing:
+		
 
 func _physics_process(delta: float) -> void:
 	if firing:
