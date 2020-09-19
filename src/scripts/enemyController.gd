@@ -7,16 +7,22 @@ var _playerDis
 
 onready var player = get_parent().get_node("player")
 var timer = Timer.new()
+var health
 
 export var speed = 200
 export var attackDamage = 10
+export var maxHealth = 50
 
 func _ready() -> void:
+	health = maxHealth
 	timer.set_wait_time(1.0)
 	timer.connect("timeout", self, "timeout")
 	add_child(timer)
 
 func _process(delta: float) -> void:
+	if health < 1:
+		Engine.set_time_scale(1)
+		queue_free()
 	_playerDis = get_position().distance_to(player.get_position())
 	Engine.set_time_scale(1)
 	if _playerDis < 250:	
