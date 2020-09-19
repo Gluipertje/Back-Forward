@@ -16,7 +16,6 @@ func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
 	if health < 1:
 		print("oof")
-	print(health)
 	if Input.is_action_just_pressed("dash"):
 		_velocity = Vector2(1, 0).rotated(get_rotation()) * speed
 	elif _velocity < Vector2(cutOff,cutOff) && _velocity > Vector2(-cutOff,-cutOff):

@@ -16,6 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Back Forward"
+run/main_scene="res://src/scenes/testScene.tscn"
 config/icon="res://icon.png"
 
 [input]
