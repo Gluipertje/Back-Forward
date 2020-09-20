@@ -32,7 +32,6 @@ func _process(delta: float) -> void:
 		
 	if _playerDis <= 100 && _canAttack:
 		player.health -= attackDamage
-		print("bonk")
 		$AnimationPlayer.stop(true)
 		randomize()
 		if randi() % 100 < 50:
