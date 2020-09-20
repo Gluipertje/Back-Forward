@@ -9,7 +9,7 @@ export var rotate = 0
 export var damageDrop = 0.01
 
 func _ready():
-	look_at(target)
+	set_rotation(target)
 	set_rotation(get_rotation() + rotate)
 	set_scale(Vector2(bulletSize, bulletSize))
 
