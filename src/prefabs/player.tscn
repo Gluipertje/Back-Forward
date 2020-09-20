@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/sprites/body/player/arm2p1.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/playerController.gd" type="Script" id=2]
@@ -14,14 +14,82 @@ render_mode unshaded;
 
 void fragment() {
 	vec4 c = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0).rgba;
-	c.r = 1.0 - c.r;
-	c.g = 1.0 - c.g;
-	c.b = 1.0 - c.b;
+	c.r = 1.0-c.r;
+	c.g = 1.0-c.g;
+	c.b = 1.0-c.b;
 	COLOR.rgba = c;
 }"
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "playerDamage"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/Sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Sprites/Sprite:modulate:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Sprites/Sprite:modulate:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Sprites/Sprite:modulate:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Sprites/Sprite:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.223529, -0.25, 0, 0.12398, 0.0075895, 1, -0.22069, -0.0256678, 0.25, 0, 0.14902, -0.25, 0, 0.25, 0, 1, -0.200942, -0.0762205, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 )
+}
 
 [node name="player" type="KinematicBody2D" groups=[
 "player",
@@ -43,6 +111,7 @@ smoothing_enabled = true
 scale = Vector2( 0.3, 0.3 )
 
 [node name="Sprite" type="Sprite" parent="Sprites"]
+rotation = 1.5708
 scale = Vector2( -1, 1 )
 texture = ExtResource( 4 )
 
@@ -82,7 +151,7 @@ margin_bottom = 7.0
 rect_scale = Vector2( 3, 3 )
 text = "Game Over"
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+[node name="ColorRecta" type="ColorRect" parent="CanvasLayer/Control"]
 visible = false
 material = SubResource( 3 )
 anchor_right = 1.0
@@ -90,3 +159,8 @@ anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ColorRect" type="WorldEnvironment" parent="CanvasLayer/Control"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/playerDamage = SubResource( 4 )

@@ -33,6 +33,8 @@ func _process(delta: float) -> void:
 	if _playerDis <= 100 && _canAttack:
 		player.health -= attackDamage
 		$AnimationPlayer.stop(true)
+		player.get_node("AnimationPlayer").stop()
+		player.get_node("AnimationPlayer").play("playerDamage")
 		randomize()
 		if randi() % 100 < 50:
 			$AnimationPlayer.play("enemyAttack1")
