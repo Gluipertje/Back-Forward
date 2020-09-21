@@ -6,12 +6,13 @@ var _state
 var _isDead = false
 var i
 var health
+var shouldShoot = true
 
 var timer = Timer.new()
 onready var player = get_parent().get_node("player")
 var bulletI = preload("res://src/prefabs/bulletTurret.tscn")
 
-export var shootSpeed = 1.0
+export var shootSpeed = 0.1
 export var maxHealth = 50
 
 enum {
@@ -40,16 +41,17 @@ func _process(delta: float) -> void:
 	
 	match _state:	
 		SHOOT:
-			look_at(player.get_position())
-			$Sprite2.set_global_rotation(0)
-			if _canShoot && !_isDead:
-				var bullet = bulletI.instance()
-				bullet.target = get_global_rotation()
-				bullet.set_name("bullet1 " + str(i))
-				bullet.set_position(to_global($sp.get_position()))
-				get_parent().add_child(bullet)
-				_canShoot = false
-				timer.start()
+			if shouldShoot:
+				look_at(player.get_position())
+				$Sprite2.set_global_rotation(0)
+				if _canShoot && !_isDead:
+					var bullet = bulletI.instance()
+					bullet.target = get_global_rotation()
+					bullet.set_name("bullet1 " + str(i))
+					bullet.set_position(to_global($sp.get_position()))
+					get_parent().add_child(bullet)
+					_canShoot = false
+					timer.start()
 		IDLE:
 			pass
 		

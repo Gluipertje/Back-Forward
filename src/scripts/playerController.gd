@@ -4,6 +4,7 @@ var _velocity = Vector2()
 var _collider
 var health
 var _canMove = true
+var prevLabel = 30
 
 export var friction = 0.1
 export var speed = 500

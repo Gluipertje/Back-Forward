@@ -1,0 +1,26 @@
+[gd_scene format=2]
+
+[node name="ColorRect" type="ColorRect"]
+margin_left = -55.0
+margin_top = -34.3326
+margin_right = 325.0
+margin_bottom = 265.667
+rect_scale = Vector2( 0.3, 0.3 )
+color = Color( 0, 0, 0, 0.482353 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = -46.4156
+margin_top = 220.246
+margin_right = 113.584
+margin_bottom = 234.246
+rect_scale = Vector2( 3, 3 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 208.584, 123.473 )

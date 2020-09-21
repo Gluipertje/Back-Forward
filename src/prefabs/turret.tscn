@@ -5,10 +5,11 @@
 [ext_resource path="res://assets/sprites/body/turret/turret1top.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 27.5193
+radius = 30.3309
 
 [node name="turret" type="StaticBody2D" groups=[
 "enemy",
+"turret",
 ]]
 script = ExtResource( 2 )
 
