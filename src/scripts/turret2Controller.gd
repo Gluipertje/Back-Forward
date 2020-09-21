@@ -6,13 +6,13 @@ var state
 var _isDead = false
 var i
 var health
-var shouldShoot = true
+var shouldShoot = false
 
 var timer = Timer.new()
 onready var player = get_parent().get_node("player")
-var bulletI = preload("res://src/prefabs/bulletTurret.tscn")
+var bulletI = preload("res://src/prefabs/powerUps/grenade.tscn")
 
-export var shootSpeed = 0.1
+export var shootSpeed = 1
 export var maxHealth = 50
 
 enum {
@@ -26,6 +26,7 @@ func _ready() -> void:
 	add_child(timer)
 	state = IDLE
 	health = maxHealth
+	print(shouldShoot)
 	
 
 func _process(delta: float) -> void:
@@ -45,11 +46,10 @@ func _process(delta: float) -> void:
 				look_at(player.get_position())
 				$Sprite2.set_global_rotation(0)
 				if _canShoot && !_isDead:
-					var bullet = bulletI.instance()
-					bullet.target = get_global_rotation()
-					bullet.set_name("bullet1 " + str(i))
-					bullet.set_position(to_global($sp.get_position()))
-					get_parent().add_child(bullet)
+					var grenade = bulletI.instance()
+					grenade.set_position(get_position())
+					grenade.apply_central_impulse((player.get_position() - get_position()).normalized() * 500)
+					get_parent().get_parent().add_child(grenade)
 					_canShoot = false
 					timer.start()
 		IDLE:

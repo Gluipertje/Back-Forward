@@ -2,11 +2,13 @@ extends Area2D
 
 export var powerType = "machineGun"
 export var spritePath = preload("res://assets/sprites/items/weapon1sv.png")
+export var spriteScale = 0.3
 onready var reverseCP = get_parent().get_node("reverseCP")
 
 var powerUpI
 
 func _ready() -> void:
+	$Sprite.set_scale(Vector2(spriteScale,spriteScale))
 	$Sprite.set_texture(spritePath)
 	var puPath = "res://src/prefabs/powerUps/" + powerType + ".tscn"
 	powerUpI = load(puPath)

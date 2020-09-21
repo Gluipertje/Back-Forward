@@ -13,16 +13,19 @@ func _ready():
 	set_rotation(get_rotation() + rotate)
 	set_scale(Vector2(bulletSize, bulletSize))
 
-#func _on_KinematicBody2D_body_entered(body: Node) -> void:
-#
-
 func _process(delta):
 	move_local_x(bulletSpeed)	
 	bulletDamage -= damageDrop
 
-
 func _on_Area2D_body_entered(body: Node) -> void:
 	if body.is_in_group("enemy") || body.is_in_group("player"):
-		body.health -= bulletDamage
+		if body.is_in_group("turret"):
+			if Global.isReverse == true:
+				body.health -= bulletDamage
+		else:
+			body.health -= bulletDamage
+#		if body.is_in_group("player"):
+#			body.get_node("AnimationPlayer").stop()
+#			body.get_node("AnimationPlayer").play("playerDamage")
 	print(body)
 	queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/prefabs/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/prefabs/enemy.tscn" type="PackedScene" id=2]
@@ -8,12 +8,15 @@
 [ext_resource path="res://src/prefabs/reverseCP.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/prefabs/turret.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/prefabs/startPoint.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/sprites/items/grenade1.png" type="Texture" id=9]
+[ext_resource path="res://src/prefabs/Grenadeturret.tscn" type="PackedScene" id=10]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 8, -21.5 )
 
 [node name="player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 107.003, 133.094 )
+maxHealth = 200
 
 [node name="enemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( 849.364, 659.476 )
@@ -35,8 +38,9 @@ scale = Vector2( 1.5, 1.5 )
 
 [node name="powerUp3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 74.4658, 407.695 )
-powerType = "speed2x"
-spritePath = ExtResource( 5 )
+powerType = "grenadeHand"
+spritePath = ExtResource( 9 )
+spriteScale = 0.2
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
@@ -50,13 +54,22 @@ tile_data = PoolIntArray( -1507321, 0, 0, -1441780, 0, 0, -1376245, 1, 0, -13762
 "add",
 ] instance=ExtResource( 7 )]
 position = Vector2( 439.993, 597.693 )
+rotation = -2.47587
 scale = Vector2( 1.5, 1.5 )
 
 [node name="turret2" parent="." groups=[
 "add",
 ] instance=ExtResource( 7 )]
 position = Vector2( 592.556, 597.693 )
+rotation = -0.607069
 scale = Vector2( 1.5, 1.5 )
 
 [node name="startPoint" parent="." instance=ExtResource( 8 )]
 position = Vector2( 110.333, 135.984 )
+
+[node name="turret3" parent="." instance=ExtResource( 10 )]
+position = Vector2( 241.212, 513.79 )
+rotation = -2.47587
+scale = Vector2( 1.5, 1.5 )
+z_index = 1
+z_as_relative = false
