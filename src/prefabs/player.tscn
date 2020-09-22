@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/sprites/body/player/arm2p1.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/playerController.gd" type="Script" id=2]
 [ext_resource path="res://assets/sprites/body/player/arm1p1.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/body/player/bodyp1.png" type="Texture" id=4]
 [ext_resource path="res://src/oth/pp_bloom.tres" type="Environment" id=5]
+[ext_resource path="res://src/oth/anim/playerDamage.tres" type="Animation" id=6]
+[ext_resource path="res://src/oth/anim/attackMelee.tres" type="Animation" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30.1287, 29.8862 )
@@ -34,7 +36,31 @@ shader = SubResource( 2 )
 shader_param/apply = true
 shader_param/amount = 1.0
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=6]
+resource_name = "attackMelee"
+length = 0.6
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Sprites/Sprite3:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 247, -0.25, 0, 0.37, -1.56509, 423.695, -0.25, 0, 0.44, 0.906738, 247, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.6 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Sprites/Sprite3:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 49, -0.25, 0, 0.25, 0, 49, -0.25, 0, 0.25, 0, 49, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.6 )
+}
+
+[sub_resource type="Animation" id=7]
 resource_name = "playerDamage"
 length = 0.4
 tracks/0/type = "value"
@@ -102,6 +128,9 @@ tracks/5/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 )
 }
 
+[sub_resource type="CircleShape2D" id=5]
+radius = 31.91
+
 [node name="player" type="KinematicBody2D" groups=[
 "player",
 ]]
@@ -141,6 +170,7 @@ texture = ExtResource( 1 )
 [node name="Control" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -182,4 +212,15 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/playerDamage = SubResource( 4 )
+anims/attackMelee = ExtResource( 7 )
+anims/playerDamage = ExtResource( 6 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/attackMelee = SubResource( 6 )
+anims/playerDamage = SubResource( 7 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 134.151, 0 )
+shape = SubResource( 5 )

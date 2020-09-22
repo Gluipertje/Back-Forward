@@ -6,7 +6,7 @@ var state
 var _isDead = false
 var i
 var health
-var shouldShoot = false
+var shouldShoot = true
 
 var timer = Timer.new()
 onready var player = get_parent().get_node("player")
@@ -28,6 +28,8 @@ func _ready() -> void:
 	add_child(timer)
 	state = IDLE
 	health = maxHealth
+	if is_in_group("add"):
+		shouldShoot = false
 	
 
 func _process(delta: float) -> void:

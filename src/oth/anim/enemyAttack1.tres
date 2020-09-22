@@ -3,27 +3,27 @@
 [resource]
 resource_name = "enemyAttack1"
 tracks/0/type = "bezier"
-tracks/0/path = NodePath("Sprite/Sprite2:position:x")
+tracks/0/path = NodePath("Sprites/Sprite2:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 194.933, -0.25, 0, 0.25, 0, 311.052, -0.25, 0, 0.25, 0, 194, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 44.3711, -0.25, 0, 0.25, 0, 82.982, -0.25, 0, 0.25, 0, 44.371, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.2, 0.8 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath("Sprite/Sprite2:position:y")
+tracks/1/path = NodePath("Sprites/Sprite2:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( -74.7648, -0.25, 0, 0.25, 0, -74.7648, -0.25, 0, 0.25, 0, -74.765, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 8.08875, -0.25, 0, 0.25, 0, 8.089, -0.25, 0, 0.25, 0, 8.089, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.2, 0.8 )
 }
 tracks/2/type = "bezier"
-tracks/2/path = NodePath("Sprite/Sprite2:rotation_degrees")
+tracks/2/path = NodePath("Sprites/Sprite2:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false

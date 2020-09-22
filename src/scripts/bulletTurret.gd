@@ -1,7 +1,7 @@
 extends Area2D
 
 export var bulletSpeed = 10
-export var bulletDamage = 10
+export var bulletDamage = 18
 export var bulletSize = 1
 export var launchAngle = 0
 export var target = Vector2()
@@ -24,4 +24,6 @@ func _on_Area2D_body_entered(body: Node) -> void:
 				body.health -= bulletDamage
 		else:
 			body.health -= bulletDamage
+			body.get_node("AnimationPlayer2").stop()
+			body.get_node("AnimationPlayer2").play("playerDamage")
 	queue_free()

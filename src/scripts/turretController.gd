@@ -27,6 +27,8 @@ func _ready() -> void:
 	add_child(timer)
 	state = IDLE
 	health = maxHealth
+	if is_in_group("add"):
+		shouldShoot = false
 	
 
 func _process(delta: float) -> void:
@@ -50,7 +52,7 @@ func _process(delta: float) -> void:
 					bullet.target = get_global_rotation()
 					bullet.set_name("bullet1 " + str(i))
 					bullet.set_position(to_global($sp.get_position()))
-					get_parent().add_child(bullet)
+					get_parent().get_parent().add_child(bullet)
 					_canShoot = false
 					timer.start()
 		IDLE:

@@ -1,0 +1,6 @@
+[gd_scene format=2]
+
+[node name="enemy(toBe)" type="Node2D" groups=[
+"add",
+"melee",
+]]

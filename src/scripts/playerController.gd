@@ -5,6 +5,7 @@ var _collider
 var health
 var _canMove = true
 var prevLabel = 10
+var doMove = true
 
 export var friction = 0.1
 export var speed = 500
@@ -20,13 +21,13 @@ func _process(delta: float) -> void:
 	if health < 1:
 		goScreen.set_visible(true)
 		_canMove = false
-	if Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("dash") && doMove:
 		_velocity = Vector2(1, 0).rotated(get_rotation()) * speed
-	elif _velocity < Vector2(cutOff,cutOff) && _velocity > Vector2(-cutOff,-cutOff):
+	elif _velocity < Vector2(cutOff,cutOff) && _velocity > Vector2(-cutOff,-cutOff) && doMove:
 		_velocity = Vector2(0,0)
 	else:
 		_velocity = lerp(_velocity, Vector2(0,0), friction)
-	if _canMove:
+	if _canMove && doMove:
 		move_and_slide(_velocity)
 		look_at(get_global_mouse_position())
 	

@@ -10,10 +10,11 @@ func _ready() -> void:
 	timer.set_wait_time(0.2)
 	timer.connect("timeout", self, "timeout")
 	add_child(timer)
-	Global.clearPOItem()
+	Global.clearPOItem(get_parent(), "machineGun")
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("lclick"):
+	var doMove = get_parent().doMove
+	if Input.is_action_just_pressed("lclick") && doMove:
 		if _canShoot:
 			var bullet = bulletI.instance()
 			bullet.target = get_global_rotation()

@@ -4,12 +4,14 @@ var player
 var hasMG
 var hasGrenade
 var isReverse = false
+var hasGloves
 
 export var poType = []
 signal reverseLevel
 onready var LabelI = preload("res://src/prefabs/Label.tscn")
 onready var SpriteI = preload("res://src/prefabs/Sprite.tscn")
 onready var wFI = preload("res://src/prefabs/UI/whiteFlash.tscn")
+onready var enemyI = preload("res://src/prefabs/enemy.tscn")
 
 func _ready() -> void:
 	connect("reverseLevel", get_parent().get_node("startPoint"), "levelReverse")
@@ -28,36 +30,45 @@ func _on_reverseCP_body_entered(body: Node) -> void:
 			reverseLevel()
 
 func reverseLevel():
-	var wF = wFI.instance()
-	player.get_node("CanvasLayer/Control").add_child(wF)
-	yield(get_tree().create_timer(0.8), "timeout")
-	player.get_node("CanvasLayer/Control/ColorRect").show()
-	isReverse = true
-	emit_signal("reverseLevel")
-	Global.isReverse = true
-	
-	for P in poType:
-		if P == "machineGun":
-			hasMG = true
-			displayNEffect("Turrets Activated!", "res://assets/sprites/UI/poTurret1n.png",1)
-		elif P == "speed2x":
-			displayNEffect("Lost Speed!", "res://assets/sprites/UI/poSpeed1n.png",1)
-		elif P == "grenadeHand":
-			hasGrenade = true
-			displayNEffect("GL Activated!", "res://assets/sprites/UI/poGrenade1n.png",0.7)
-	
-	for N in get_parent().get_children():
-		if N.is_in_group("delete"):
-			N.clear()
-		elif N.is_in_group("add"):
-			if N.is_in_group("turret") && hasMG:
-				N.shouldShoot = true
-				print(N.get_name())
-			if N.is_in_group("GL") && hasGrenade:
-				N.shouldShoot = true
-				print(N.get_name())
-		else:
-			pass
+	if !isReverse:
+		var wF = wFI.instance()
+		player.get_node("CanvasLayer/Control").add_child(wF)
+		isReverse = true
+		Global.isReverse = true
+		yield(get_tree().create_timer(0.8), "timeout")
+		player.get_node("CanvasLayer/Control/ColorRect").show()
+		emit_signal("reverseLevel")
+		
+		for P in poType:
+			if P == "machineGun":
+				hasMG = true
+				displayNEffect("Turrets Activated!", "res://assets/sprites/UI/poTurret1n.png",1)
+			elif P == "speed2x":
+				get_parent().get_node("player").speed = get_parent().get_node("player").speed / 3
+				displayNEffect("Lost Speed!", "res://assets/sprites/UI/poSpeed1n.png",1)
+			elif P == "grenadeHand":
+				hasGrenade = true
+				displayNEffect("GLs Activated!", "res://assets/sprites/UI/poGrenade1n.png",0.7)
+			elif P == "boxingGloves":
+				hasGloves = true
+				displayNEffect("More Enemies!", "res://assets/sprites/UI/poBoxing1n.png",0.7)
+		
+		for N in get_parent().get_children():
+			if N.is_in_group("delete"):
+				N.clear()
+			elif N.is_in_group("add"):
+				if N.is_in_group("turret") && hasMG:
+					N.shouldShoot = true
+					print(N.get_name())
+				if N.is_in_group("GL") && hasGrenade:
+					N.shouldShoot = true
+					print(N.get_name())
+				if N.is_in_group("melee") && hasGloves:
+					var enemy = enemyI.instance()
+					enemy.set_position(N.get_position())
+					N.get_parent().add_child(enemy)
+			else:
+				pass
 		
 
 func displayNEffect(text, Texturea, scale):

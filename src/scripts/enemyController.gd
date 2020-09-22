@@ -33,8 +33,8 @@ func _process(delta: float) -> void:
 	if _playerDis <= 100 && _canAttack:
 		player.health -= attackDamage
 		$AnimationPlayer.stop(true)
-		player.get_node("AnimationPlayer").stop()
-		player.get_node("AnimationPlayer").play("playerDamage")
+		player.get_node("AnimationPlayer2").stop()
+		player.get_node("AnimationPlayer2").play("playerDamage")
 		randomize()
 		if randi() % 100 < 50:
 			$AnimationPlayer.play("enemyAttack1")
@@ -45,7 +45,7 @@ func _process(delta: float) -> void:
 		
 	if _playerDis < detectionRange && _playerDis >= 100:
 		_velocity = to_local(player.get_position()).normalized() * speed
-		$Sprite.look_at(player.get_position())
+		$Sprites.look_at(player.get_position())
 	else:
 		_velocity = Vector2(0,0)
 		

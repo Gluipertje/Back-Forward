@@ -13,5 +13,7 @@ func _ready() -> void:
 				pass
 			else:
 				i.health -= 50
+				i.get_node("AnimationPlayer2").stop()
+				i.get_node("AnimationPlayer2").play("playerDamage")
 	yield(get_tree().create_timer(0.7), "timeout")
 	queue_free()

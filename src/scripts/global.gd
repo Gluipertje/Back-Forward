@@ -2,10 +2,18 @@ extends Node
 
 var isReverse = false
 
-func clearPOItem():
-	if get_parent().has_node("grenadeHand"):
-			get_parent().get_node("grenadeHand").queue_free()
-			get_parent().get_parent().get_node("reverseCP").poType.erase("grenadeHand")
-	elif get_parent().has_node("machineGun"):
-		get_parent().get_node("machineGun").queue_free()
-		get_parent().get_parent().get_node("reverseCP").poType.erase("machineGun")
+func clearPOItem(player, accessPO):
+	if player.has_node("grenadeHand") && accessPO != "grenadeHand":
+		player.get_node("grenadeHand").queue_free()
+		player.get_parent().get_node("reverseCP").poType.erase("grenadeHand")
+		print("removed grenade")
+		
+	if player.has_node("machineGun") && accessPO != "machineGun":
+		player.get_node("machineGun").queue_free()
+		player.get_parent().get_node("reverseCP").poType.erase("machineGun")
+		print("removed gun")
+		
+	if player.has_node("boxingGloves") && accessPO != "boxingGloves":
+		player.get_node("boxingGloves").remove()
+		player.get_parent().get_node("reverseCP").poType.erase("boxingGloves")
+		print("removed gloves")
