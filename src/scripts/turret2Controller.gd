@@ -14,6 +14,8 @@ var bulletI = preload("res://src/prefabs/powerUps/grenade.tscn")
 
 export var shootSpeed = 1
 export var maxHealth = 50
+export var detectionRange = 500
+export var grenadeVelocity = 500
 
 enum {
 	IDLE,
@@ -26,7 +28,6 @@ func _ready() -> void:
 	add_child(timer)
 	state = IDLE
 	health = maxHealth
-	print(shouldShoot)
 	
 
 func _process(delta: float) -> void:
@@ -35,7 +36,7 @@ func _process(delta: float) -> void:
 		$CollisionShape2D.queue_free()
 		_isDead = true
 	_playerDis = get_position().distance_to(player.get_position())
-	if _playerDis < 500 && shouldShoot:
+	if _playerDis < detectionRange && shouldShoot:
 		state = SHOOT
 	else:
 		state = IDLE
@@ -48,7 +49,7 @@ func _process(delta: float) -> void:
 				if _canShoot && !_isDead:
 					var grenade = bulletI.instance()
 					grenade.set_position(get_position())
-					grenade.apply_central_impulse((player.get_position() - get_position()).normalized() * 500)
+					grenade.apply_central_impulse((player.get_position() - get_position()).normalized() * grenadeVelocity)
 					get_parent().get_parent().add_child(grenade)
 					_canShoot = false
 					timer.start()

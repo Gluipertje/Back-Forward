@@ -10,9 +10,7 @@ func _ready() -> void:
 	timer.set_wait_time(0.2)
 	timer.connect("timeout", self, "timeout")
 	add_child(timer)
-	if get_parent().has_node("grenadeHand"):
-		get_parent().get_node("grenadeHand").queue_free()
-		get_parent().get_parent().get_node("reverseCP").poType.erase("grenadeHand")
+	Global.clearPOItem()
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("lclick"):

@@ -9,6 +9,8 @@ func _ready() -> void:
 			if i.is_in_group("turret"):
 				if Global.isReverse == true:
 					i.health -= 50
+			elif i.is_in_group("GL"):
+				pass
 			else:
 				i.health -= 50
 	yield(get_tree().create_timer(0.7), "timeout")

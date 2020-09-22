@@ -24,8 +24,4 @@ func _on_Area2D_body_entered(body: Node) -> void:
 				body.health -= bulletDamage
 		else:
 			body.health -= bulletDamage
-#		if body.is_in_group("player"):
-#			body.get_node("AnimationPlayer").stop()
-#			body.get_node("AnimationPlayer").play("playerDamage")
-	print(body)
 	queue_free()

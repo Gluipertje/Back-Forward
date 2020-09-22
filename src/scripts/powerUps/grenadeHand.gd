@@ -9,9 +9,7 @@ func _ready() -> void:
 	timer.set_wait_time(1)
 	timer.connect("timeout", self, "timeout")
 	add_child(timer)
-	if get_parent().has_node("machineGun"):
-		get_parent().get_node("machineGun").queue_free()
-		get_parent().get_parent().get_node("reverseCP").poType.e("machineGun")
+	Global.clearPOItem()
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("lclick") && _canShoot:

@@ -14,6 +14,7 @@ var bulletI = preload("res://src/prefabs/bulletTurret.tscn")
 
 export var shootSpeed = 0.1
 export var maxHealth = 50
+export var detectionRange = 500
 
 enum {
 	IDLE,
@@ -34,7 +35,7 @@ func _process(delta: float) -> void:
 		$CollisionShape2D.queue_free()
 		_isDead = true
 	_playerDis = get_position().distance_to(player.get_position())
-	if _playerDis < 500 && shouldShoot:
+	if _playerDis < detectionRange && shouldShoot:
 		state = SHOOT
 	else:
 		state = IDLE

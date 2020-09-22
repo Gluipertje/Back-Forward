@@ -9,7 +9,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30.1287, 29.8862 )
 
-[sub_resource type="Shader" id=5]
+[sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
 
 uniform bool apply = true;
@@ -29,8 +29,8 @@ void fragment() {
 	COLOR = color;
 }"
 
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 5 )
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
 shader_param/apply = true
 shader_param/amount = 1.0
 
@@ -164,7 +164,7 @@ text = "Game Over"
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
 visible = false
-material = SubResource( 6 )
+material = SubResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {

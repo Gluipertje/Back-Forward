@@ -2,12 +2,14 @@ extends Area2D
 
 var player
 var hasMG
+var hasGrenade
 var isReverse = false
 
 export var poType = []
 signal reverseLevel
 onready var LabelI = preload("res://src/prefabs/Label.tscn")
 onready var SpriteI = preload("res://src/prefabs/Sprite.tscn")
+onready var wFI = preload("res://src/prefabs/UI/whiteFlash.tscn")
 
 func _ready() -> void:
 	connect("reverseLevel", get_parent().get_node("startPoint"), "levelReverse")
@@ -26,6 +28,9 @@ func _on_reverseCP_body_entered(body: Node) -> void:
 			reverseLevel()
 
 func reverseLevel():
+	var wF = wFI.instance()
+	player.get_node("CanvasLayer/Control").add_child(wF)
+	yield(get_tree().create_timer(0.8), "timeout")
 	player.get_node("CanvasLayer/Control/ColorRect").show()
 	isReverse = true
 	emit_signal("reverseLevel")
@@ -38,15 +43,17 @@ func reverseLevel():
 		elif P == "speed2x":
 			displayNEffect("Lost Speed!", "res://assets/sprites/UI/poSpeed1n.png",1)
 		elif P == "grenadeHand":
+			hasGrenade = true
 			displayNEffect("GL Activated!", "res://assets/sprites/UI/poGrenade1n.png",0.7)
-	yield(get_tree().create_timer(0.3), "timeout")
 	
 	for N in get_parent().get_children():
 		if N.is_in_group("delete"):
 			N.clear()
 		elif N.is_in_group("add"):
-			print(N.get_name())
 			if N.is_in_group("turret") && hasMG:
+				N.shouldShoot = true
+				print(N.get_name())
+			if N.is_in_group("GL") && hasGrenade:
 				N.shouldShoot = true
 				print(N.get_name())
 		else:
