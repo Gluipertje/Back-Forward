@@ -15,6 +15,7 @@ onready var enemyI = preload("res://src/prefabs/enemy.tscn")
 
 func _ready() -> void:
 	connect("reverseLevel", get_parent().get_node("startPoint"), "levelReverse")
+	poType.clear()
 	for N in get_parent().get_children():
 		if N.is_in_group("add") && N.is_in_group("turret"):
 			N.shouldShoot = false

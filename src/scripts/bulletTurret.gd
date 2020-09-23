@@ -20,7 +20,10 @@ func _process(delta):
 func _on_Area2D_body_entered(body: Node) -> void:
 	if body.is_in_group("enemy") || body.is_in_group("player"):
 		if body.is_in_group("turret"):
-			if Global.isReverse == true:
+			if body.is_in_group("add"):
+				if Global.isReverse == true:
+					body.health -= bulletDamage
+			else:
 				body.health -= bulletDamage
 		else:
 			body.health -= bulletDamage

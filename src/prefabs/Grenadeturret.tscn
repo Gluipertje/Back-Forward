@@ -28,4 +28,4 @@ texture = ExtResource( 3 )
 shape = SubResource( 1 )
 
 [node name="sp" type="Node2D" parent="."]
-position = Vector2( 37.7434, 0.465584 )
+position = Vector2( 47.7434, 0.465584 )

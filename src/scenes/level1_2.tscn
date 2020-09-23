@@ -22,7 +22,6 @@ position = Vector2( 2776.13, 278.127 )
 position = Vector2( 483.146, 538.907 )
 powerType = "boxingGloves"
 spritePath = ExtResource( 3 )
-spriteScale = 0.3
 
 [node name="startPoint" parent="." instance=ExtResource( 9 )]
 position = Vector2( 138.51, 245.579 )

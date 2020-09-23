@@ -33,7 +33,10 @@ func _process(delta: float) -> void:
 		for i in bodies:
 			if i.is_in_group("enemy"):
 				if i.is_in_group("turret"):
-					if Global.isReverse == true:
+					if i.is_in_group("add"):
+						if Global.isReverse == true:
+							i.health -= 20
+					else:
 						i.health -= 20
 				else:
 					i.health -= 20

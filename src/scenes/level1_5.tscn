@@ -1,0 +1,132 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/prefabs/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/prefabs/powerUp.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/sprites/items/poBoxing1.png" type="Texture" id=3]
+[ext_resource path="res://src/prefabs/turret.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/oth/1a.tres" type="TileSet" id=5]
+[ext_resource path="res://src/prefabs/startPoint.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/prefabs/reverseCP.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/prefabs/enemy.tscn" type="PackedScene" id=8]
+
+[node name="5" type="Node2D"]
+position = Vector2( 107.029, 0 )
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 403.714, 299.536 )
+
+[node name="powerUp" parent="." instance=ExtResource( 2 )]
+position = Vector2( 745.664, 148.566 )
+
+[node name="powerUp2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 740.1, 497.962 )
+powerType = "boxingGloves"
+spritePath = ExtResource( 3 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 5 )
+format = 1
+tile_data = PoolIntArray( -458734, 1, 0, -458733, 1, 0, -458732, 1, 0, -458731, 1, 0, -458730, 1, 0, -458729, 1, 0, -458728, 1, 0, -458727, 1, 0, -458726, 1, 0, -458725, 1, 0, -458724, 1, 0, -458723, 1, 0, -458722, 1, 0, -458721, 1, 0, -458720, 1, 0, -458719, 1, 0, -458718, 1, 0, -458717, 1, 0, -458716, 1, 0, -458715, 1, 0, -458714, 1, 0, -458713, 1, 0, -458712, 1, 0, -458711, 1, 0, -458710, 1, 0, -458709, 1, 0, -458708, 1, 0, -458707, 1, 0, -458706, 1, 0, -458705, 1, 0, -458704, 1, 0, -458703, 1, 0, -458702, 1, 0, -458701, 1, 0, -458700, 1, 0, -458699, 1, 0, -458698, 1, 0, -458697, 1, 0, -458696, 1, 0, -458695, 1, 0, -458694, 1, 0, -458693, 1, 0, -458692, 1, 0, -458691, 1, 0, -458690, 1, 0, -458689, 1, 0, -393198, 1, 0, -393153, 1, 0, -327662, 1, 0, -327617, 1, 0, -262126, 1, 0, -262081, 1, 0, -196590, 1, 0, -196545, 1, 0, -131054, 1, 0, -131009, 1, 0, -65518, 1, 0, -65473, 1, 0, 2, -1073741823, 0, 3, -1073741823, 0, 4, -1073741823, 0, 5, -1073741823, 0, 6, -1073741823, 0, 7, -1073741823, 0, 8, -1073741823, 0, 9, -1073741823, 0, 10, -1073741823, 0, 11, -1073741823, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 18, 1, 0, 63, 1, 0, 65538, -1073741823, 0, 65551, 1, 0, 65554, 1, 0, 65599, -1610612734, 0, 65600, -1610612735, 0, 65601, -1610612735, 0, 65602, -1610612735, 0, 131074, -1073741823, 0, 131087, 1, 0, 131088, 1, 0, 131089, 1, 0, 131090, 1, 0, 131138, -1610612734, 0, 131139, 1, 0, 131140, 1, 0, 131141, 1, 0, 131142, 1, 0, 131143, 1, 0, 196610, -1073741823, 0, 196679, 1, 0, 262146, -1073741823, 0, 262154, -1073741823, 0, 262155, -1073741823, 0, 262156, -1073741822, 0, 262215, 1, 0, 327682, -1073741823, 0, 327690, -1073741823, 0, 327691, -1073741823, 0, 327692, 2, 0, 327751, 1, 0, 393218, -1073741823, 0, 393287, 1, 0, 458754, -1073741823, 0, 458767, 1, 0, 458768, 1, 0, 458769, 1, 0, 458770, 1, 0, 458818, 1610612738, 0, 458819, 1, 0, 458820, 1, 0, 458821, 1, 0, 458822, 1, 0, 458823, 1, 0, 524290, -1073741823, 0, 524303, 1, 0, 524306, 1, 0, 524351, 1610612738, 0, 524352, -1610612735, 0, 524353, -1610612735, 0, 524354, -1610612735, 0, 589826, -1073741823, 0, 589827, -1073741823, 0, 589828, -1073741823, 0, 589829, -1073741823, 0, 589830, -1073741823, 0, 589831, -1073741823, 0, 589832, -1073741823, 0, 589833, -1073741823, 0, 589834, -1073741823, 0, 589835, -1073741823, 0, 589836, 1, 0, 589837, 1, 0, 589838, 1, 0, 589839, 1, 0, 589842, 1, 0, 589887, 1, 0, 655378, 1, 0, 655423, 1, 0, 720914, 1, 0, 720959, 1, 0, 786450, 1, 0, 786495, 1, 0, 851986, 1, 0, 852031, 1, 0, 917522, 1, 0, 917567, 1, 0, 983058, 1, 0, 983103, 1, 0, 1048594, 1, 0, 1048595, 1, 0, 1048596, 1, 0, 1048597, 1, 0, 1048598, 1, 0, 1048599, 1, 0, 1048600, 1, 0, 1048601, 1, 0, 1048602, 1, 0, 1048603, 1, 0, 1048604, 1, 0, 1048605, 1, 0, 1048606, 1, 0, 1048607, 1, 0, 1048608, 1, 0, 1048609, 1, 0, 1048610, 1, 0, 1048611, 1, 0, 1048612, 1, 0, 1048613, 1, 0, 1048614, 1, 0, 1048615, 1, 0, 1048616, 1, 0, 1048617, 1, 0, 1048618, 1, 0, 1048619, 1, 0, 1048620, 1, 0, 1048621, 1, 0, 1048622, 1, 0, 1048623, 1, 0, 1048624, 1, 0, 1048625, 1, 0, 1048626, 1, 0, 1048627, 1, 0, 1048628, 1, 0, 1048629, 1, 0, 1048630, 1, 0, 1048631, 1, 0, 1048632, 1, 0, 1048633, 1, 0, 1048634, 1, 0, 1048635, 1, 0, 1048636, 1, 0, 1048637, 1, 0, 1048638, 1, 0, 1048639, 1, 0 )
+
+[node name="turret" parent="." groups=[
+"add",
+] instance=ExtResource( 4 )]
+position = Vector2( 1315.86, 112.626 )
+detectionRange = 1000
+
+[node name="turret9" parent="." groups=[
+"add",
+] instance=ExtResource( 4 )]
+position = Vector2( 3767.86, -95.3739 )
+rotation = 3.14159
+detectionRange = 1000
+
+[node name="turret10" parent="." groups=[
+"add",
+] instance=ExtResource( 4 )]
+position = Vector2( 3759.86, -283.374 )
+rotation = 3.14159
+detectionRange = 1000
+
+[node name="turret11" parent="." groups=[
+"add",
+] instance=ExtResource( 4 )]
+position = Vector2( 3759.86, 716.626 )
+rotation = 3.14159
+detectionRange = 1000
+
+[node name="turret12" parent="." groups=[
+"add",
+] instance=ExtResource( 4 )]
+position = Vector2( 3767.86, 928.626 )
+rotation = 3.14159
+detectionRange = 1000
+
+[node name="turret13" parent="." groups=[
+"add",
+] instance=ExtResource( 4 )]
+position = Vector2( 2603.86, 936.626 )
+rotation = -1.5708
+detectionRange = 1000
+
+[node name="turret14" parent="." groups=[
+"add",
+] instance=ExtResource( 4 )]
+position = Vector2( 2603.86, -267.374 )
+rotation = 1.5708
+detectionRange = 1000
+
+[node name="turret5" parent="." groups=[
+"add",
+] instance=ExtResource( 4 )]
+position = Vector2( 1315.86, -277.991 )
+detectionRange = 1000
+
+[node name="turret6" parent="." groups=[
+"add",
+] instance=ExtResource( 4 )]
+position = Vector2( 1315.86, 920.799 )
+detectionRange = 1000
+
+[node name="turret4" parent="." groups=[
+"add",
+] instance=ExtResource( 4 )]
+position = Vector2( 1315.86, -84.9272 )
+detectionRange = 1000
+
+[node name="turret2" parent="." groups=[
+"add",
+] instance=ExtResource( 4 )]
+position = Vector2( 1315.86, 518.417 )
+detectionRange = 1000
+
+[node name="turret7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 3927.36, 112.626 )
+rotation = 3.14159
+detectionRange = 1000
+
+[node name="turret8" parent="." instance=ExtResource( 4 )]
+position = Vector2( 3927.36, 518.417 )
+rotation = 3.14159
+detectionRange = 1000
+
+[node name="turret3" parent="." groups=[
+"add",
+] instance=ExtResource( 4 )]
+position = Vector2( 1315.86, 702.501 )
+detectionRange = 1000
+
+[node name="reverseCP" parent="." instance=ExtResource( 7 )]
+position = Vector2( 4445.68, 327.874 )
+
+[node name="startPoint" parent="." instance=ExtResource( 6 )]
+position = Vector2( 404.971, 305 )
+
+[node name="enemy" parent="." instance=ExtResource( 8 )]
+position = Vector2( 2373.6, 551.964 )
+
+[node name="enemy2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 2373.6, 101.142 )
+
+[node name="enemy3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 2970.46, 307.504 )

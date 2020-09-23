@@ -22,11 +22,9 @@ maxHealth = 200
 
 [node name="enemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( 849.364, 659.476 )
-maxHealth = 50
 
 [node name="enemy2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 947.361, 542.986 )
-maxHealth = 50
 
 [node name="powerUp" parent="." instance=ExtResource( 4 )]
 position = Vector2( 596.892, 48.3421 )
@@ -64,14 +62,12 @@ tile_data = PoolIntArray( -1507321, 0, 0, -1441780, 0, 0, -1376245, 1, 0, -13762
 ] instance=ExtResource( 7 )]
 position = Vector2( 439.993, 597.693 )
 rotation = -2.47587
-scale = Vector2( 1.5, 1.5 )
 
 [node name="turret2" parent="." groups=[
 "add",
 ] instance=ExtResource( 7 )]
 position = Vector2( 592.556, 597.693 )
 rotation = -0.607069
-scale = Vector2( 1.5, 1.5 )
 
 [node name="startPoint" parent="." instance=ExtResource( 8 )]
 position = Vector2( 110.333, 135.984 )
@@ -81,7 +77,6 @@ position = Vector2( 110.333, 135.984 )
 ] instance=ExtResource( 10 )]
 position = Vector2( 241.212, 513.79 )
 rotation = -2.47587
-scale = Vector2( 1.5, 1.5 )
 z_index = 1
 z_as_relative = false
 

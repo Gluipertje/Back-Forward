@@ -50,7 +50,7 @@ func _process(delta: float) -> void:
 				$Sprite2.set_global_rotation(0)
 				if _canShoot && !_isDead:
 					var grenade = bulletI.instance()
-					grenade.set_position(get_position())
+					grenade.set_position(to_global($sp.get_position()))
 					grenade.apply_central_impulse((player.get_position() - get_position()).normalized() * grenadeVelocity)
 					get_parent().get_parent().add_child(grenade)
 					_canShoot = false

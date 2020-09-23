@@ -8,8 +8,8 @@
 [ext_resource path="res://src/oth/anim/playerDamage.tres" type="Animation" id=6]
 [ext_resource path="res://src/oth/anim/attackMelee.tres" type="Animation" id=7]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 30.1287, 29.8862 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 40.4839
 
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
@@ -36,7 +36,7 @@ shader = SubResource( 2 )
 shader_param/apply = true
 shader_param/amount = 1.0
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "attackMelee"
 length = 0.6
 tracks/0/type = "bezier"
@@ -60,7 +60,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2, 0.6 )
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 resource_name = "playerDamage"
 length = 0.4
 tracks/0/type = "value"
@@ -128,7 +128,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 )
 }
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=6]
 radius = 31.91
 
 [node name="player" type="KinematicBody2D" groups=[
@@ -148,6 +148,7 @@ current = true
 smoothing_enabled = true
 
 [node name="Sprites" type="Node2D" parent="."]
+position = Vector2( -2.62203, 0 )
 scale = Vector2( 0.3, 0.3 )
 
 [node name="Sprite" type="Sprite" parent="Sprites"]
@@ -216,11 +217,11 @@ anims/attackMelee = ExtResource( 7 )
 anims/playerDamage = ExtResource( 6 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
-anims/attackMelee = SubResource( 6 )
-anims/playerDamage = SubResource( 7 )
+anims/attackMelee = SubResource( 4 )
+anims/playerDamage = SubResource( 5 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 134.151, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )

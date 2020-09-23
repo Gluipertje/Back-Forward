@@ -8,7 +8,7 @@ radius = 9.27055
 
 [node name="grenade" type="RigidBody2D"]
 collision_layer = 4
-collision_mask = 8
+collision_mask = 10
 gravity_scale = 0.0
 linear_damp = 1.2
 angular_velocity = 10.0

@@ -7,7 +7,10 @@ func _ready() -> void:
 	for i in killGuys:
 		if i.is_in_group("enemy") || i.is_in_group("player"):
 			if i.is_in_group("turret"):
-				if Global.isReverse == true:
+				if i.is_in_group("add"):
+					if Global.isReverse == true:
+						i.health -= 50
+				else:
 					i.health -= 50
 			elif i.is_in_group("GL"):
 				pass
