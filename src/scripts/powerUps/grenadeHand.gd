@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var doMove = get_parent().doMove
-	if Input.is_action_just_pressed("lclick") && _canShoot && doMove:
+	if Input.is_action_just_pressed("lclick") && _canShoot && doMove && !Global.isDead:
 		var grenade = grenadeI.instance()
 		grenade.set_position(get_parent().get_position())
 		grenade.apply_central_impulse((get_global_mouse_position() - get_parent().get_position()).normalized() * 700)

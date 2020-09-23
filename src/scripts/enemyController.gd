@@ -28,6 +28,7 @@ func _process(delta: float) -> void:
 #		Engine.set_time_scale((_playerDis/290))
 	if health < 1:
 		Engine.set_time_scale(1)
+		Global.score += 1
 		queue_free()
 		
 	if _playerDis <= 100 && _canAttack:
@@ -43,7 +44,7 @@ func _process(delta: float) -> void:
 		_canAttack = false
 		timer.start()
 		
-	if _playerDis < detectionRange && _playerDis >= 90: #&& get_world_2d().direct_space_state.intersect_ray(get_position(), player.get_position())["collider"].name == "player":
+	if _playerDis < detectionRange && _playerDis >= 100: #&& get_world_2d().direct_space_state.intersect_ray(get_position(), player.get_position())["collider"].name == "player":
 		_velocity = to_local(player.get_position()).normalized() * speed
 		$Sprites.look_at(player.get_position())
 	else:

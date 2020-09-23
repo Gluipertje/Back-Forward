@@ -36,6 +36,7 @@ func _process(delta: float) -> void:
 	if health < 1 && !_isDead:
 		$Sprite.queue_free()
 		$CollisionShape2D.queue_free()
+		Global.score += 2
 		_isDead = true
 	_playerDis = get_position().distance_to(player.get_position())
 	if _playerDis < detectionRange && shouldShoot:

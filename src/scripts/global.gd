@@ -1,6 +1,9 @@
 extends Node
 
 var isReverse = false
+var score = 0
+var isDead = false
+var isWon = false
 
 func clearPOItem(player, accessPO):
 	if player.has_node("grenadeHand") && accessPO != "grenadeHand":

@@ -22,7 +22,7 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	var doMove = get_parent().doMove
-	if Input.is_action_just_pressed("lclick") && _canHit && doMove:
+	if Input.is_action_just_pressed("lclick") && _canHit && doMove && !Global.isDead:
 		animPlayer.stop()
 		animPlayer.play("attackMelee")
 #		yield(animPlayer, "animation_finished()")

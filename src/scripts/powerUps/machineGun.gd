@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var doMove = get_parent().doMove
-	if Input.is_action_just_pressed("lclick") && doMove:
+	if Input.is_action_just_pressed("lclick") && doMove && !Global.isDead:
 		if _canShoot:
 			var bullet = bulletI.instance()
 			bullet.target = get_global_rotation()

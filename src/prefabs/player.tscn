@@ -136,7 +136,7 @@ radius = 31.91
 ]]
 z_index = 2
 z_as_relative = false
-collision_mask = 14
+collision_mask = 10
 script = ExtResource( 2 )
 speed = 1000
 
@@ -208,6 +208,48 @@ environment = ExtResource( 5 )
 [node name="Control" type="Control" parent="CanvasLayer/Control"]
 margin_right = 40.0
 margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Control"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 23.5968
+margin_top = -156.152
+margin_right = 123.597
+margin_bottom = -116.152
+rect_scale = Vector2( 1.5, 1.5 )
+color = Color( 0, 0, 0, 0.792157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/ColorRect2"]
+margin_left = 16.8179
+margin_top = 14.1421
+margin_right = 59.8179
+margin_bottom = 28.1421
+text = "Score: "
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer/Control"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 22.653
+margin_top = -82.8159
+margin_right = 62.653
+margin_bottom = -42.8159
+rect_scale = Vector2( 7.5, 1.5 )
+color = Color( 0, 0, 0, 0.819608 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect4" type="ColorRect" parent="CanvasLayer/Control/ColorRect3"]
+margin_left = 0.5
+margin_top = 6.0
+margin_right = 38.5
+margin_bottom = 34.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

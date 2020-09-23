@@ -68,6 +68,9 @@ func reverseLevel():
 					var enemy = enemyI.instance()
 					enemy.set_position(N.get_position())
 					N.get_parent().add_child(enemy)
+				if N.is_in_group("world"):
+					N.show()
+					N.set_collision_layer_bit(3,4)
 			else:
 				pass
 		
