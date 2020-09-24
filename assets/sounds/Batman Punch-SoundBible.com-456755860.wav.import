@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Batman Punch-SoundBible.com-456755860.wav-1eeb1856a048db8e73b3d6414ddd8540.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Batman Punch-SoundBible.com-456755860.wav"
+dest_files=[ "res://.import/Batman Punch-SoundBible.com-456755860.wav-1eeb1856a048db8e73b3d6414ddd8540.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

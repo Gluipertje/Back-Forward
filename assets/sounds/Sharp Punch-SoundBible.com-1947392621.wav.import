@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Sharp Punch-SoundBible.com-1947392621.wav-1cac8169db8da0c48e65d4254437f14a.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Sharp Punch-SoundBible.com-1947392621.wav"
+dest_files=[ "res://.import/Sharp Punch-SoundBible.com-1947392621.wav-1cac8169db8da0c48e65d4254437f14a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

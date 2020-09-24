@@ -5,6 +5,8 @@ var _canAttack = true
 var _velocity = Vector2(0,0)
 var _playerDis
 
+onready var sfxI = preload("res://src/oth/sfx/punch1sfx.tscn")
+onready var sfx1I = preload("res://src/oth/sfx/punch2sfx.tscn")
 onready var player = get_parent().get_node("player")
 var timer = Timer.new()
 var health
@@ -37,6 +39,14 @@ func _process(delta: float) -> void:
 		player.get_node("AnimationPlayer2").stop()
 		player.get_node("AnimationPlayer2").play("playerDamage")
 		randomize()
+		if randi() % 2 == 1:
+			var sfx = sfxI.instance()
+			sfx.set_position(get_position())
+			get_tree().get_root().add_child(sfx)
+		else:
+			var sfx1 = sfx1I.instance()
+			sfx1.set_position(get_position())
+			get_tree().get_root().add_child(sfx1)
 		if randi() % 100 < 50:
 			$AnimationPlayer.play("enemyAttack1")
 		else:

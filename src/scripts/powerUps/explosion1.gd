@@ -1,6 +1,11 @@
 extends Area2D
 
+onready var sfx2I = preload("res://src/oth/sfx/explosion1sfx.tscn")
+
 func _ready() -> void:
+	var sfx = sfx2I.instance()
+	sfx.set_position(get_position())
+	get_tree().get_root().add_child(sfx)
 	$AnimationPlayer.play("explosion1")
 	yield(get_tree().create_timer(0.3), "timeout")
 	var killGuys = get_overlapping_bodies()

@@ -5,6 +5,10 @@ var sprite3
 var areaDeath
 var animPlayer
 
+onready var sfxI = preload("res://src/oth/sfx/punch1sfx.tscn")
+onready var sfx1I = preload("res://src/oth/sfx/punch2sfx.tscn")
+onready var sfx2I = preload("res://src/oth/sfx/whoosh1sfx.tscn")
+
 var _canHit = true
 var timer = Timer.new()
 
@@ -40,8 +44,20 @@ func _process(delta: float) -> void:
 						i.health -= 20
 				else:
 					i.health -= 20
+					if randi() % 2 == 1:
+						var sfx = sfxI.instance()
+						sfx.set_position(get_parent().get_position())
+						get_tree().get_root().add_child(sfx)
+					else:
+						var sfx1 = sfx1I.instance()
+						sfx1.set_position(get_parent().get_position())
+						get_tree().get_root().add_child(sfx1)
 					i.get_node("AnimationPlayer2").stop()
 					i.get_node("AnimationPlayer2").play("playerDamage")
+		
+		var sfx2 = sfx2I.instance()
+		sfx2.set_position(get_parent().get_position())
+		get_tree().get_root().add_child(sfx2)
 
 func timeout():
 	_canHit = true

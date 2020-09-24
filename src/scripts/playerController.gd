@@ -15,10 +15,12 @@ export var maxHealth = 100
 
 onready var goScreen = get_node("CanvasLayer/Control/GameOver")
 onready var healthBar = get_node("CanvasLayer/Control/ColorRect3/ColorRect4")
+onready var sfx2I = preload("res://src/oth/sfx/whoosh1sfx.tscn")
 
 func _ready() -> void:
 	health = maxHealth
 	sizex = healthBar.rect_size.x
+	Global.isWon = false
 
 func _process(delta: float) -> void:
 	if health < 1 && !Global.isWon:
@@ -27,6 +29,11 @@ func _process(delta: float) -> void:
 		Global.isDead = true
 	if Input.is_action_just_pressed("dash") && doMove:
 		_velocity = Vector2(1, 0).rotated(get_rotation()) * speed
+		var sfx2 = sfx2I.instance()
+		sfx2.set_position(get_position())
+		sfx2.set_pitch_scale(1.3)
+		sfx2.set_volume_db(-5)
+		get_tree().get_root().add_child(sfx2)
 	elif _velocity < Vector2(cutOff,cutOff) && _velocity > Vector2(-cutOff,-cutOff) && doMove:
 		_velocity = Vector2(0,0)
 	else:

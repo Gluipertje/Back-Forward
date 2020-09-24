@@ -12,6 +12,7 @@ onready var LabelI = preload("res://src/prefabs/Label.tscn")
 onready var SpriteI = preload("res://src/prefabs/Sprite.tscn")
 onready var wFI = preload("res://src/prefabs/UI/whiteFlash.tscn")
 onready var enemyI = preload("res://src/prefabs/enemy.tscn")
+onready var sfxI = preload("res://src/oth/sfx/boop1sfx.tscn")
 
 func _ready() -> void:
 	connect("reverseLevel", get_parent().get_node("startPoint"), "levelReverse")
@@ -33,6 +34,9 @@ func _on_reverseCP_body_entered(body: Node) -> void:
 func reverseLevel():
 	if !isReverse:
 		var wF = wFI.instance()
+		var sfx = sfxI.instance()
+		sfx.set_position(get_position())
+		get_tree().get_root().add_child(sfx)
 		player.get_node("CanvasLayer/Control").add_child(wF)
 		isReverse = true
 		Global.isReverse = true
