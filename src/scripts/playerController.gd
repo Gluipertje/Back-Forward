@@ -16,17 +16,24 @@ export var maxHealth = 100
 onready var goScreen = get_node("CanvasLayer/Control/GameOver")
 onready var healthBar = get_node("CanvasLayer/Control/ColorRect3/ColorRect4")
 onready var sfx2I = preload("res://src/oth/sfx/whoosh1sfx.tscn")
+onready var goScreenI = preload("res://src/prefabs/UI/goScreen.tscn")
 
 func _ready() -> void:
 	health = maxHealth
 	sizex = healthBar.rect_size.x
 	Global.isWon = false
+	Global.isDead = false
+	Global.isReverse = false
+	var sceneToChangeTo = get_tree().get_current_scene().get_name()
+	get_node("CanvasLayer/Control/ColorRect4/Label").set_text("Level: " + str(sceneToChangeTo))
 
 func _process(delta: float) -> void:
-	if health < 1 && !Global.isWon:
-		goScreen.set_visible(true)
+	if health < 1 && !Global.isWon && !Global.isDead:
+		goScreen = goScreenI.instance()
+		get_node("CanvasLayer/Control").add_child(goScreen)
 		_canMove = false
 		Global.isDead = true
+		Global.score = 0
 	if Input.is_action_just_pressed("dash") && doMove:
 		_velocity = Vector2(1, 0).rotated(get_rotation()) * speed
 		var sfx2 = sfx2I.instance()

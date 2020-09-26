@@ -1,0 +1,116 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://src/scripts/UI/restartSceneButton.gd" type="Script" id=1]
+[ext_resource path="res://assets/misc/hinted-ElaineSans-Black.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://src/oth/button1.tres" type="StyleBox" id=3]
+[ext_resource path="res://src/oth/button1h.tres" type="StyleBox" id=4]
+[ext_resource path="res://src/oth/button1p.tres" type="StyleBox" id=5]
+[ext_resource path="res://src/scripts/UI/quit.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=6]
+size = 160
+outline_size = 20
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 130
+outline_size = 10
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.670588, 0.486275, 0.486275, 1 )
+border_color = Color( 0.45098, 0.301961, 0.301961, 1 )
+corner_radius_top_right = 40
+corner_detail = 20
+shadow_offset = Vector2( -16.718, 16 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.32549, 0.32549, 0.32549, 1 )
+border_color = Color( 0.32549, 0.45098, 0.301961, 1 )
+corner_radius_top_right = 40
+corner_detail = 20
+shadow_offset = Vector2( -16.718, 16 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.670588, 0.486275, 0.486275, 1 )
+border_width_left = 40
+border_width_bottom = 40
+border_color = Color( 0.45098, 0.301961, 0.301961, 1 )
+corner_radius_top_right = 40
+corner_detail = 20
+shadow_offset = Vector2( -16.718, 16 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 160
+outline_size = 20
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[node name="GameOver" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.560784 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -120.716
+margin_top = -69.331
+margin_right = 754.284
+margin_bottom = 162.669
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 6 )
+text = "Game Over"
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -84.3424
+margin_top = 6.63489
+margin_right = 556.658
+margin_bottom = 278.635
+rect_scale = Vector2( 0.3, 0.3 )
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = SubResource( 7 )
+text = "Restart"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -264.556
+margin_top = -78.6572
+margin_right = 935.444
+margin_bottom = 201.343
+rect_scale = Vector2( 0.2, 0.2 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
+text = "Quit Game"
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="Button2" method="_on_Button2_pressed"]

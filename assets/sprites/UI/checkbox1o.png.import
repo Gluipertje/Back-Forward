@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/checkbox1o.png-47c80815625ddeb778ed06c351a17611.image"
+
+[deps]
+
+source_file="res://assets/sprites/UI/checkbox1o.png"
+dest_files=[ "res://.import/checkbox1o.png-47c80815625ddeb778ed06c351a17611.image" ]
+
+[params]
+

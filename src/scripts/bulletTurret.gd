@@ -14,7 +14,7 @@ func _ready():
 	set_scale(Vector2(bulletSize, bulletSize))
 
 func _process(delta):
-	move_local_x(bulletSpeed)	
+	move_local_x(bulletSpeed * delta * 100)	
 	bulletDamage -= damageDrop
 
 func _on_Area2D_body_entered(body: Node) -> void:

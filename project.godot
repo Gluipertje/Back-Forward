@@ -16,12 +16,20 @@ _global_script_class_icons={
 [application]
 
 config/name="Back Forward"
-run/main_scene="res://src/scenes/level1_1.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://src/scenes/mainMenu.tscn"
+boot_splash/image="res://logo2.png"
+boot_splash/fullsize=false
+boot_splash/bg_color=Color( 1, 0.729412, 0.729412, 1 )
+config/icon="res://logo2.png"
+config/windows_native_icon="res://logo2.ico"
 
 [autoload]
 
 Global="*res://src/scripts/global.gd"
+
+[debug]
+
+settings/fps/force_fps=60
 
 [input]
 

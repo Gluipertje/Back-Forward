@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/scripts/UI/nextLevel.gd" type="Script" id=1]
+[ext_resource path="res://assets/misc/hinted-ElaineSans-Black.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://src/oth/button1.tres" type="StyleBox" id=3]
+[ext_resource path="res://src/oth/button1h.tres" type="StyleBox" id=4]
+[ext_resource path="res://src/oth/button1p.tres" type="StyleBox" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 160
+outline_size = 20
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 110
+outline_size = 10
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
 
 [node name="won" type="Control"]
 anchor_right = 1.0
@@ -21,12 +37,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -92.0591
-margin_top = -48.3452
-margin_right = -19.0591
-margin_bottom = -34.3452
-rect_scale = Vector2( 3, 3 )
-text = "u won!!"
+margin_left = -199.34
+margin_top = -79.0005
+margin_right = 1197.66
+margin_bottom = 152.999
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 1 )
+text = "Level Completed!"
 align = 1
 valign = 1
 
@@ -35,11 +52,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -84.0881
+margin_left = -82.3044
 margin_top = 1.34613
-margin_right = 115.912
-margin_bottom = 51.3461
+margin_right = 581.696
+margin_bottom = 230.346
+rect_scale = Vector2( 0.3, 0.3 )
 focus_mode = 1
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = SubResource( 2 )
 enabled_focus_mode = 1
 text = "Continue!"
 script = ExtResource( 1 )

@@ -64,14 +64,12 @@ detectionRange = 2000
 "add",
 ] instance=ExtResource( 3 )]
 position = Vector2( 393.085, 262.86 )
-shootSpeed = 0.2
 detectionRange = 800
 
 [node name="turret7" parent="." groups=[
 "add",
 ] instance=ExtResource( 3 )]
 position = Vector2( 626.854, 262.86 )
-shootSpeed = 0.2
 detectionRange = 800
 
 [node name="turret2" parent="." groups=[

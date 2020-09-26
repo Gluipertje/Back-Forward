@@ -36,7 +36,6 @@ func reverseLevel():
 		var wF = wFI.instance()
 		var sfx = sfxI.instance()
 		sfx.set_position(get_position())
-		get_tree().get_root().add_child(sfx)
 		player.get_node("CanvasLayer/Control").add_child(wF)
 		isReverse = true
 		Global.isReverse = true
@@ -78,7 +77,8 @@ func reverseLevel():
 			else:
 				pass
 		
-
+		get_tree().get_root().add_child(sfx)
+		
 func displayNEffect(text, Texturea, scale):
 	var Labela = LabelI.instance()
 	Labela.set_position(Vector2(player.prevLabel + 32, 32))
